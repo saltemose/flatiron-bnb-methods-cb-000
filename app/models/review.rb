@@ -1,4 +1,6 @@
 class Review < ActiveRecord::Base
+  #before_create :change_user_status
+
   belongs_to :reservation
   belongs_to :guest, :class_name => "User"
   validates :rating, :description, presence: true
