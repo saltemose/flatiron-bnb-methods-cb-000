@@ -1,6 +1,7 @@
 class Listing < ActiveRecord::Base
 
   before_create :change_user_status
+  before_destroy :destroy_host_status
 
   belongs_to :neighborhood
   belongs_to :host, :class_name => "User"
@@ -22,5 +23,7 @@ class Listing < ActiveRecord::Base
   def change_user_status
       self.host.update(host: true)
   end
+
+  def destroy_host_status
 
 end
