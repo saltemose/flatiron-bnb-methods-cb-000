@@ -1,4 +1,7 @@
 class Listing < ActiveRecord::Base
+
+  before_create :change_user_status
+  
   belongs_to :neighborhood
   belongs_to :host, :class_name => "User"
   has_many :reservations
@@ -14,6 +17,6 @@ class Listing < ActiveRecord::Base
     end
 
     ratings.sum.to_f / ratings.count
-  end 
+  end
 
 end
