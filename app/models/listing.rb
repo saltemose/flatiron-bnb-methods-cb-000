@@ -21,7 +21,6 @@ class Listing < ActiveRecord::Base
 
   def change_user_status
       self.host.update(host: true)
-    end
   end
 
 end
