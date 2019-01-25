@@ -20,7 +20,6 @@ class Listing < ActiveRecord::Base
   end
 
   def change_user_status
-    if self.host == nil
       host.update(host: true)
     end
   end
