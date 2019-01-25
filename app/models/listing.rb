@@ -25,7 +25,8 @@ class Listing < ActiveRecord::Base
   end
 
   def clear_host_status
-    if Listing.find_by_id(:host)
+    if Listing.where(host: host).where.not(id: id).empty?
+      host.update(host: false)
   end
 
 end
