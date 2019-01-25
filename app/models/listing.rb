@@ -24,7 +24,7 @@ class Listing < ActiveRecord::Base
       self.host.update(host: true)
   end
 
-  def destroy_host_status
+  def clear_host_status
     if Listing.find_by_id(:host)
   end
 
