@@ -21,7 +21,7 @@ class Reservation < ActiveRecord::Base
         if (checkin <= r.checkout) && (checkout >= r.checkin)
           errors.add(:checkin, "listing is not available")
         end
-      end
+        end
     end
   end
 
@@ -36,4 +36,13 @@ class Reservation < ActiveRecord::Base
       errors.add(:guest_id, "Your checkin and checkout dates cannot be the same.")
     end
   end
+
+  def duration
+    (checkout - checkin).to_i
+  end
+
+  def total_price
+    self.listing.price.to_i * duration
+  end
+
 end
