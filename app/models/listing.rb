@@ -20,8 +20,8 @@ class Listing < ActiveRecord::Base
   end
 
   def change_user_status
-    if user.host = nil
-      user.host(host: true)
+    self.host.host? = true 
+    self.host.save
   end
 
 end
