@@ -25,7 +25,7 @@ class Listing < ActiveRecord::Base
   end
 
   def clear_host_status
-    if self.host.listings.count <= 1
+    if self.host.listings.count < 1
       host.update(host: false)
     end
   end
