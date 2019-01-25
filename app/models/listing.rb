@@ -4,15 +4,16 @@ class Listing < ActiveRecord::Base
   has_many :reservations
   has_many :reviews, :through => :reservations
   has_many :guests, :class_name => "User", :through => :reservations
-  has_many :ratings, :through => :reviews
 
   validates :address, :listing_type, :title, :description, :price, :neighborhood_id, presence: true
 
   def average_review_rating
-    sum = 0
-    self.ratings.each do |rating|
-      sum = rating + sum
+    ratings = []
+    self.reservations.each do |r|
+      ratings << r.review.rating
     end
-    sum/self.ratings.count
-  end
+
+    ratings.sum.to_f / ratings.count
+  end 
+
 end
